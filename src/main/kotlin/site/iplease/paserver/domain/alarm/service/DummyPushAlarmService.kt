@@ -1,12 +1,12 @@
 package site.iplease.paserver.domain.alarm.service
 
 import org.slf4j.LoggerFactory
-import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.toMono
 import site.iplease.paserver.domain.alarm.data.dto.SendAlarmDto
 
-@Service
+@Deprecated("use strategic alarm service or another implementation")
+//@Service
 class DummyPushAlarmService: PushAlarmService {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
