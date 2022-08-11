@@ -24,6 +24,9 @@ repositories {
 extra["springCloudVersion"] = "2021.0.3"
 
 dependencies {
+	//html markdown converter
+	// https://mvnrepository.com/artifact/org.jetbrains/markdown
+	implementation("org.jetbrains:markdown:0.3.1")
 	//annotation
 	compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 	compileOnly("jakarta.annotation:jakarta.annotation-api:2.1.0")
