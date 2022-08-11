@@ -57,6 +57,8 @@ dependencies {
 	//test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
+	//fcm
+	implementation ("com.google.firebase:firebase-admin:9.0.0")
 }
 
 dependencyManagement {
