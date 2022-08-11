@@ -44,6 +44,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
 	//spring doc
 	implementation ("org.springdoc:springdoc-openapi-webflux-ui:1.6.8")
 	//spring cloud
@@ -57,6 +58,8 @@ dependencies {
 	//test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
+	//fcm
+	implementation ("com.google.firebase:firebase-admin:9.0.0")
 }
 
 dependencyManagement {
