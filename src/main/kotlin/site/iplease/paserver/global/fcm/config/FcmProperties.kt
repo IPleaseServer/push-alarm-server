@@ -7,5 +7,6 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConfigurationProperties("iplease.fcm")
 data class FcmProperties(
     val firebaseConfigPath: String,
-    val apiUrl: String
+    val apiUrl: String,
+    val redisKeyPrefix: String
 )
