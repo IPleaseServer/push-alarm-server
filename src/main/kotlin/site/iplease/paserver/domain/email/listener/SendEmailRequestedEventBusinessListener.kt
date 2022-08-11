@@ -8,7 +8,7 @@ import site.iplease.paserver.domain.email.util.EmailAddressResolver
 import site.iplease.paserver.domain.email.util.EmailContentResolver
 
 @Component
-class SendEmailRequestedEventListener(
+class SendEmailRequestedEventBusinessListener(
     private val emailAddressResolver: EmailAddressResolver,
     private val emailContentResolver: EmailContentResolver,
     private val emailService: EmailService
