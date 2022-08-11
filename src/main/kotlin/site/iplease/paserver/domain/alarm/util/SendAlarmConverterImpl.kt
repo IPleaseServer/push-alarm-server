@@ -12,6 +12,7 @@ class SendAlarmConverterImpl: SendAlarmConverter {
         message.toMono()
             .map { SendAlarmDto(
                 type = it.type,
+                receiverId = it.receiverId,
                 title = it.title,
                 description = it.description
             ) }

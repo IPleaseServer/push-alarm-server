@@ -13,6 +13,7 @@ class DummyPushAlarmService: PushAlarmService {
     override fun sendAlarm(data: SendAlarmDto): Mono<Unit> =
         data.toMono().map {
             logger.info("푸시알림을 송신합니다!")
+            logger.info("receiverId: ${data.receiverId}")
             logger.info("type: ${data.type}")
             logger.info("title: ${data.title}")
             logger.info("description: ${data.description}")

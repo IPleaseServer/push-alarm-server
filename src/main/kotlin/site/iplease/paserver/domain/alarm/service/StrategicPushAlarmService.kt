@@ -14,7 +14,7 @@ class StrategicPushAlarmService(
 ): PushAlarmService {
     override fun sendAlarm(data: SendAlarmDto): Mono<Unit> =
         when(data.type) {
-            AlarmType.EMAIL -> emailPushAlarmStrategy.sendAlarm(header = data.title, content = data.description)
-            AlarmType.FCM -> fcmPushAlarmStrategy.sendAlarm(title = data.title, description = data.description)
+            AlarmType.EMAIL -> emailPushAlarmStrategy.sendAlarm(receiverId = data.receiverId, header = data.title, content = data.description)
+            AlarmType.FCM -> fcmPushAlarmStrategy.sendAlarm(title = data.title, description = data.description) //TODO ReceiverId 추가
         }
 }
