@@ -1,4 +1,4 @@
-package site.iplease.paserver.global.fcm.service
+package site.iplease.paserver.global.fcm.strategy
 
 import reactor.core.publisher.Mono
 

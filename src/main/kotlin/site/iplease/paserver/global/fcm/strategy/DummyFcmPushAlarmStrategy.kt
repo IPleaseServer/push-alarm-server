@@ -1,4 +1,4 @@
-package site.iplease.paserver.global.fcm.service
+package site.iplease.paserver.global.fcm.strategy
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
