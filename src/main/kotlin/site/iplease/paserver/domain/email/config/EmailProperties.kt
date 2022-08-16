@@ -6,5 +6,6 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConstructorBinding
 @ConfigurationProperties("iplease.email")
 data class EmailProperties(
-    val from: String
+    val from: String,
+    val cssFilePath: String
 )

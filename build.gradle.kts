@@ -60,6 +60,10 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 	//fcm
 	implementation ("com.google.firebase:firebase-admin:9.0.0")
+
+	// https://mvnrepository.com/artifact/org.jsoup/jsoup
+	implementation("org.jsoup:jsoup:1.15.2")
+
 }
 
 dependencyManagement {
