@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "site.iplease"
-version = "1.0.0-RELEASE2"
+version = "1.1.0-RELEASE"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
@@ -60,6 +60,10 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 	//fcm
 	implementation ("com.google.firebase:firebase-admin:9.0.0")
+
+	// https://mvnrepository.com/artifact/org.jsoup/jsoup
+	implementation("org.jsoup:jsoup:1.15.2")
+
 }
 
 dependencyManagement {
