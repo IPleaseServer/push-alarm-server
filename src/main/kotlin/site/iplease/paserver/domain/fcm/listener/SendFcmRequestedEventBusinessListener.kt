@@ -1,10 +1,12 @@
 package site.iplease.paserver.domain.fcm.listener
 
 import org.springframework.context.event.EventListener
+import org.springframework.stereotype.Component
 import site.iplease.paserver.domain.fcm.data.event.SendFcmRequestedEvent
 import site.iplease.paserver.domain.fcm.service.FcmService
 import site.iplease.paserver.domain.fcm.util.FcmTokenResolver
 
+@Component
 class SendFcmRequestedEventBusinessListener(
     private val fcmTokenResolver: FcmTokenResolver,
     private val fcmService: FcmService
