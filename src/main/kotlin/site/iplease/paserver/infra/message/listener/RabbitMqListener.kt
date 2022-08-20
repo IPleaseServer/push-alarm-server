@@ -25,9 +25,15 @@ class RabbitMqListener(
             MessageType.SEND_ALARM ->
                 objectMapper.toMono()
                     .map { it.readValue(String(message.body), SendAlarmMessage::class.java) }
-                    .map { sendAlarmSubscriber.subscribe(message = it) }
                     .doOnError { throwable ->
                         logger.error("메세지를 직렬화하는도중 오류가 발생하였습니다!")
+                        logger.error("exception: ${throwable.localizedMessage}")
+                        logger.error("payload(string): ${String(message.body)}")
+                        logger.error("payload(byte): ${message.body}")
+                    }.onErrorResume { Mono.empty() }
+                    .map { sendAlarmSubscriber.subscribe(message = it) }
+                    .doOnError { throwable ->
+                        logger.error("알 수 없는 오류가 발생하였습니다!")
                         logger.error("exception: ${throwable.localizedMessage}")
                         logger.error("payload(string): ${String(message.body)}")
                         logger.error("payload(byte): ${message.body}")

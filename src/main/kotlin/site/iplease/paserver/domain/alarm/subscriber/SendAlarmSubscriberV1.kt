@@ -20,7 +20,7 @@ class SendAlarmSubscriberV1(
             .doOnError { throwable ->
                 logger.error("알람송신로직 수행중 오류가 발생하였습니다!")
                 logger.error("type: ${throwable::class.simpleName}")
-                logger.error("exception: ${throwable.localizedMessage}")
+                logger.error("exception: ${throwable.message}")
             }.onErrorResume { Mono.empty() }
             .block()
     }
