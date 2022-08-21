@@ -6,25 +6,33 @@ import org.intellij.markdown.parser.MarkdownParser
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
-import org.springframework.core.io.ClassPathResource
+import org.springframework.core.io.ResourceLoader
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.toMono
 import site.iplease.paserver.domain.email.config.EmailProperties
-import java.nio.file.Files
-import java.nio.file.Paths
 import java.util.*
 
 @Component
 class MarkdownContentResolverWithCss(
-    private val emailProperties: EmailProperties
+    private val emailProperties: EmailProperties,
+    private val resourceLoader: ResourceLoader
 ): EmailContentResolver {
 
     fun cssPrefix() =
-        ClassPathResource(emailProperties.cssFilePath)
-            .let { resource -> Paths.get(resource.uri) }
-            .let{ path -> Files.readString(path) }
-            .let{ css -> "<body><style>$css</style>".trimIndent().replace("\n", "") }
+        resourceLoader.getResource(emailProperties.cssFilePath)
+            .inputStream
+            .bufferedReader()
+            .let { br ->
+                val buffer = StringBuffer()
+                var line: String?
+                line = append(br.readLine(), buffer)
+                while (line != null) line = append(br.readLine(), buffer)
+                return@let buffer.toString()
+            }.let{ css -> "<body><style>$css</style>".trimIndent().replace("\n", "") }
+            .apply { println(this) }
+
+    fun append(line: String?, buffer: StringBuffer) = buffer.append(line).let { line }
 
     override fun resolve(content: String): Mono<String> =
         CommonMarkFlavourDescriptor().toMono()
